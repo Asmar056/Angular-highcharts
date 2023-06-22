@@ -6,9 +6,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ColumnChartComponent } from './column-chart/column-chart.component';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { PieChartComponent } from './pie-chart/pie-chart.component';
 
 @NgModule({
-  declarations: [AppComponent, ColumnChartComponent],
+  declarations: [AppComponent, ColumnChartComponent, PieChartComponent],
 
   imports: [
     BrowserModule,

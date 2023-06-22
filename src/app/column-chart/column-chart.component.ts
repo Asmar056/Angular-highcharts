@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
 @Component({
@@ -6,25 +6,28 @@ import * as Highcharts from 'highcharts';
   templateUrl: './column-chart.component.html',
   styleUrls: ['./column-chart.component.css'],
 })
-export class ColumnChartComponent {
+export class ColumnChartComponent implements OnInit {
   Highcharts: typeof Highcharts = Highcharts;
   chartConstructor: string = 'chart';
   chartOptions: Highcharts.Options = {};
   chartSeries: any = [
     {
-      name: 'John',
-      data: [5, 3, 4, 7, 2],
+      name: 'Fuel Gas Use (GTs)',
+      data: [385440, 0],
     },
     {
-      name: 'Jane',
-      data: [2, 2, 3, 2, 1],
+      name: 'Flared Gas',
+      data: [0, 163670.49],
     },
     {
-      name: 'Joe',
-      data: [3, 4, 4, 2, 5],
+      name: 'Methane (Flared Gas)',
+      data: [0, 65600],
     },
   ];
 
+  ngOnInit(): void {
+    this.loadChart();
+  }
   loadChart() {
     this.chartOptions = {
       chart: {
@@ -45,21 +48,21 @@ export class ColumnChartComponent {
       ],
 
       title: {
-        text: '',
+        text: 'Column chart',
       },
       legend: {
         layout: 'vertical',
         align: 'right',
         verticalAlign: 'top',
-        // x: 10,
-        // y: 50,
+        x: -300,
+        y: 150,
         floating: true,
         symbolRadius: 0,
       },
       xAxis: {
         width: 600,
 
-        categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas'],
+        categories: ['Contributor 1', 'Contributor 2'],
         title: {
           text: 'Contributor',
         },
@@ -85,7 +88,7 @@ export class ColumnChartComponent {
           stacking: 'normal',
         },
       },
-      series: this.chartSeries
+      series: this.chartSeries,
     };
   }
 }
